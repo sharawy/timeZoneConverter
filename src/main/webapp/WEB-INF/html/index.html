@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="MyController as ctrl">
+<head>
+    <link rel="stylesheet" href="resources/css/style.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.0/ui-bootstrap-tpls.js"></script>
+    <script src="resources/js/datetime-picker.js"></script>
+    <script src="resources/js/app.js"></script>
+</head>
+<body style="padding:10px;" class="container-fluid">
+
+<div>
+ 
+    <hr />
+    <h3>Pick a time</h3>
+    
+    <form class="form-horizontal" >
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Time</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <input type="text" class="form-control" datetime-picker="HH:mm" ng-model="picker2.date" is-open="ctrl.picker2.open" enable-date="false" timepicker-options="ctrl.picker2.timepickerOptions" close-on-selection="true" />
+              <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'picker2')"><i class="fa fa-clock-o"></i></button>
+              </span>
+                </p>
+            </div>
+             <label class="col-sm-2 control-label">Time Zone</label>
+            <div class="col-sm-10">
+                <p class="input-group">
+                    <select ng-options="item as item.label for item in timeZones track by item.id" ng-model="model.zoneId">
+                        <option value="">Select Time Zone</option>
+                    </select>
+                </p>
+            </div>
+            
+        </div>
+        
+        
+    </form>
+ <span class="input-group-btn">
+                  <button type="button" class="btn btn-default" ng-click="convert()">
+                      Convert
+                  </button>
+           </span>
+    <hr />
+    <div class="form-group">
+            <label class="col-sm-2 control-label">Converted Time:</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">{{ result | date : "yyyy-MM-dd hh:mm"}}</p>
+            </div>
+        </div>
+    
+</div>
+</body>
+
+</html>
